@@ -1,14 +1,21 @@
 $(function(){
   var $button = $('#name');
-  var $p = $('#adjective');
+  var $adj = $('#adjective');
+  var $noun = $('#noun');
+  var $verb = $('#verb');
 
   $button.click(function () {
     $.get('http://localhost:3000/adjective', function(response){
-      $p.text(response.word);
+      $adj.text(response.word);
+    });
+
+    $.get('http://localhost:3000/verb', function(response){
+      $verb.text(response.word);
+    });
+
+    $.get('http://localhost:3000/noun', function(response){
+      $noun.text(response.word);
     });
   });
 });
 
-$.get('http://localhost:3000/adjective', function(response){
-  $p.text(response);
-});

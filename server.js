@@ -12,6 +12,23 @@ function Adjective() {
   this.jumping = true;
 };
 
+function Noun() {
+  this.squirrel = true;
+  this.weinerDogs = true;
+  this.fingerNail = true;
+  this.eggMcMuffin = true;
+};
+
+function Verb() {
+  this.running = true;
+  this.swimming = true;
+  this.canoeing = true;
+  this.gambling = true;
+  this.driving = true;
+};
+
+var nounView = new Noun();
+var verbView = new Verb();
 var adjectiveView = new Adjective();
 
 function getRandomWord (object) {
@@ -31,6 +48,15 @@ app.get("/", function (request, response) {
 app.get("/adjective", function (request, response) {
   response.json(getRandomWord(adjectiveView));
 });
+
+app.get("/verb", function (request, response) {
+  response.json(getRandomWord(verbView));
+});
+
+app.get("/noun", function (request, response) {
+  response.json(getRandomWord(nounView));
+});
+
 
 
 
