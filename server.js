@@ -9,7 +9,10 @@ function Adjective() {
   this.happy = true;
   this.sad = true;
   this.mad = true;
-  this.jumping = true;
+  this.orange = true;
+  this.pink = true;
+  this.rotten = true;
+  this.bad = true;
 };
 
 function Noun() {
@@ -17,6 +20,8 @@ function Noun() {
   this.weinerDogs = true;
   this.fingerNail = true;
   this.eggMcMuffin = true;
+  this.sneakers = true;
+  this.medicine = true;
 };
 
 function Verb() {
@@ -25,6 +30,7 @@ function Verb() {
   this.canoeing = true;
   this.gambling = true;
   this.driving = true;
+  this.smelling = true;
 };
 
 var nounView = new Noun();
@@ -41,21 +47,27 @@ app.listen(port, function () {
   console.log('server started on port 3000');
 });
 
-app.get("/", function (request, response) {
+app.post("/", function (request, response) {
   response.sendFile('index.html');
 });
 
-app.get("/adjective", function (request, response) {
+app.post("/adjective", function (request, response) {
   response.json(getRandomWord(adjectiveView));
 });
 
-app.get("/verb", function (request, response) {
+app.post("/verb", function (request, response) {
   response.json(getRandomWord(verbView));
 });
 
-app.get("/noun", function (request, response) {
+app.post("/noun", function (request, response) {
   response.json(getRandomWord(nounView));
 });
+
+
+
+
+
+
 
 
 
