@@ -1,67 +1,41 @@
 var express = require('express');
 var app = express();
+var adjective = require('./adjective');
+var noun = require('./noun');
+var verb = require('./verb');
+var rand = require('./randomWord');
 
 app.use(express.static(__dirname + '/app/'));
 
 var port = process.env.PORT || 3000;
 
-function Adjective() {
-  this.happy = true;
-  this.sad = true;
-  this.mad = true;
-  this.orange = true;
-  this.pink = true;
-  this.rotten = true;
-  this.bad = true;
-};
+var nounView = new noun.theNoun();
+var verbView = new verb.theVerb();
+var adjectiveView = new adjective.theAdjective();
 
-function Noun() {
-  this.squirrel = true;
-  this.weinerDogs = true;
-  this.fingerNail = true;
-  this.eggMcMuffin = true;
-  this.sneakers = true;
-  this.medicine = true;
-};
-
-function Verb() {
-  this.running = true;
-  this.swimming = true;
-  this.canoeing = true;
-  this.gambling = true;
-  this.driving = true;
-  this.smelling = true;
-};
-
-var nounView = new Noun();
-var verbView = new Verb();
-var adjectiveView = new Adjective();
-
-function getRandomWord (object) {
-  var propArray = Object.keys(object);
-  var randomProp = propArray[Math.floor((Math.random() * propArray.length))];
-  return {word: randomProp};
-}
+console.log(typeof rand.gRWord);
 
 app.listen(port, function () {
   console.log('server started on port 3000');
 });
 
-app.post("/", function (request, response) {
+app.get("/", function (request, response) {
   response.sendFile('index.html');
 });
 
-app.post("/adjective", function (request, response) {
-  response.json(getRandomWord(adjectiveView));
+app.get("/adjective", function (request, response) {
+  response.json(rand.gRWord(adjectiveView));
 });
 
-app.post("/verb", function (request, response) {
-  response.json(getRandomWord(verbView));
+app.get("/verb", function (request, response) {
+  response.json(rand.gRWord(verbView));
 });
 
-app.post("/noun", function (request, response) {
-  response.json(getRandomWord(nounView));
+app.get("/noun", function (request, response) {
+  response.json(rand.gRWord(nounView));
 });
+
+
 
 
 
