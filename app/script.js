@@ -4,23 +4,35 @@ $(function () {
   var $noun = $('#noun');
   var $verb = $('#verb');
   var $submitAdj = $('#submitAdj');
-  var $adject = $('#adject');
+  var $adjRes = $("#adjectiveRes");
 
   $button.click(function () {
-    $.get('http://localhost:3000/adjective', function (response) {
+    $.get('adjective', function (response) {
       $adj.text(response.word);
     });
 
-    $.get('http://localhost:3000/verb', function (response) {
+    $.get('verb', function (response) {
       $verb.text(response.word);
     });
 
-    $.get('http://localhost:3000/noun', function (response) {
+    $.get('noun', function (response) {
       $noun.text(response.word);
     });
   });
 
-  $submitAdj.click(function () {
+  $submitAdj.click(function(e) {
+    e.preventDefault();
+
+    var adjective = $("#adject").val();
+    var adjPost;
+
+    if (adjective) {
+      adjPost = {word: adjective};
+      $.post("adjectives", adjPost, function(response) {
+        var adjectiveRes = response.msg;
+        $adjRes.text(adjectiveRes);
+      });
+    }
 
   });
 

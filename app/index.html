@@ -9,10 +9,14 @@
       <span id='adjective'></span> <span id='verb'></span> <span id='noun'></span>
     </p>
   <h3>Add an adjective to the list</h3>
-    <form action="http://localhost:3000/adjective" method="POST" id"newAdjective">
-     <input type="text"  placeholder="TYPE ADJECTIVE HERE" id="adject">
-     <button id='submitAdj'>add adjective to list</button>
+     <form id="submitWord">
+      <label>Type a new adjective:</label><input type="text" id="adject">
+      <button type="submit" id='submitAdj'>Send</button>
     </form>
+
+    <p id='adjectiveRes'></p>
+
+
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
