@@ -21,11 +21,10 @@ var nounData = new Noun();
 var verbData = new Verb();
 var adjectiveData = new Adjective();
 
-function postWord (word, wordObject) {
+function postWord(word, wordObject) {
   if (wordObject.hasOwnProperty(word)) {
     return {msg: 'We already have your awesome word, ' + word + ', in our list.'};
   }
-
   wordObject[word] = true;
   console.dir(wordObject);
   return {msg: 'Thanks for submitting ' + word + '!'};
@@ -43,12 +42,11 @@ app.get("/adjective", function (request, response) {
   response.json(rand.gRWord(adjectiveData));
 });
 
-app.get('/adjectives', function(request, response) {
-  //get adj
+app.get('/adjectives', function (request, response) {
   response.json(adjectiveData);
 });
 
-app.post('/adjectives', function(request, response) {
+app.post('/adjectives', function (request, response) {
   var word = postWord(request.body.word, adjectiveData);
   response.json(word);
 });
@@ -57,8 +55,26 @@ app.get("/verb", function (request, response) {
   response.json(rand.gRWord(verbData));
 });
 
+app.get('/verbs', function (request, response) {
+  response.json(verbData);
+});
+
+app.post('/verbs', function (request, response) {
+  var word = postWord(request.body.word, verbData);
+  response.json(word);
+});
+
 app.get("/noun", function (request, response) {
   response.json(rand.gRWord(nounData));
+});
+
+app.get('/nouns', function (request, response) {
+  response.json(nounData);
+});
+
+app.post('/nouns', function (request, response) {
+  var word = postWord(request.body.word, nounData);
+  response.json(word);
 });
 
 
