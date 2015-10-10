@@ -5,6 +5,7 @@ $(function () {
   var $verb = $('#verb');
   var $submitAdj = $('#submitAdj');
   var $adjRes = $("#adjectiveRes");
+  var $select = $('#select');
 
   $button.click(function () {
     $.get('adjective', function (response) {
@@ -20,22 +21,35 @@ $(function () {
     });
   });
 
-  $submitAdj.click(function(e) {
+  $submitAdj.click(function (e) {
     e.preventDefault();
-
-    var adjective = $("#adject").val();
+    var selected = $select.val();
+    var word = $("#word").val();
     var adjPost;
 
-    if (adjective) {
-      adjPost = {word: adjective};
-      $.post("adjectives", adjPost, function(response) {
-        var adjectiveRes = response.msg;
-        $adjRes.text(adjectiveRes);
-      });
+    if (word) {
+      adjPost = {word: word};
+
+      if (selected === 'adjective') {
+        $.post("adjectives", adjPost, function (response) {
+          var adjectiveRes = response.msg;
+          $adjRes.text(adjectiveRes);
+        });
+      }
+      if (selected === 'verb') {
+        $.post("verbs", adjPost, function (response) {
+          var adjectiveRes = response.msg;
+          $adjRes.text(adjectiveRes);
+        });
+      }
+      if (selected === 'noun') {
+        $.post("nouns", adjPost, function (response) {
+          var adjectiveRes = response.msg;
+          $adjRes.text(adjectiveRes);
+        });
+      }
     }
-
   });
-
 });
 
 

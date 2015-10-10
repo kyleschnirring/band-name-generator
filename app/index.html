@@ -8,13 +8,17 @@
       name:
       <span id='adjective'></span> <span id='verb'></span> <span id='noun'></span>
     </p>
-  <h3>Add an adjective to the list</h3>
-     <form id="submitWord">
-      <label>Type a new adjective:</label><input type="text" id="adject">
-      <button type="submit" id='submitAdj'>Send</button>
-    </form>
 
-    <p id='adjectiveRes'></p>
+  <h3>Add a new word to the list</h3>
+
+  <form id="submitWord">
+    <label>Type a new <select id='select'><option value="adjective">Adjective</option><option value="verb">Verb</option>
+    <option value="noun">Noun</option>
+    </select></label><input type="text" id="word">
+    <button type="submit" id='submitAdj'>Send</button>
+  </form>
+
+  <p id='adjectiveRes'></p>
 
 
 
