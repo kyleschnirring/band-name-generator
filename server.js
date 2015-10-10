@@ -31,7 +31,6 @@ function postWord (word, wordObject) {
   return {msg: 'Thanks for submitting ' + word + '!'};
 };
 
-
 app.listen(port, function () {
   console.log('server started on port 3000');
 });
