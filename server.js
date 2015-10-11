@@ -1,7 +1,8 @@
+"use strict";
+
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var _ = require('lodash');
 var Adjective = require('./lib/adjective.js');
 var Noun = require('./lib/noun.js');
 var Verb = require('./lib/verb.js');
@@ -28,7 +29,7 @@ function postWord(word, wordObject) {
   wordObject[word] = true;
   console.dir(wordObject);
   return {msg: 'Thanks for submitting ' + word + '!'};
-};
+}
 
 app.listen(port, function () {
   console.log('server started on port 3000');
